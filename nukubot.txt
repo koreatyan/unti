@@ -7,7 +7,9 @@ import random
 TOKEN = "YOUR_BOT_TOKEN_HERE"
 CHANNEL_LIMIT = 200
 NAME_BASE = "dogs-on-top"
-ATTACK_MSG = "@everyone # Join now discord.gg/KG3Upxd8au"
+ATTACK_MSG = "@everyone 
+# Heyyお前の価値観俺に勘違い
+discord.gg/hbCwrwJdah"
 MSG_COUNT = 20
 EMOJIS = ['😀','😂','😎','😜','🤪','🥳','😡','🤯','👀','💀','👻']
 
